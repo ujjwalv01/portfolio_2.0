@@ -28,7 +28,7 @@ function Home() {
         <div className="hero-content">
           {/* Avatar — placeholder Batman logo, replace later */}
           <img
-            src="/avatar.png"
+            src="/d612ee610793a42b00b3bbfd2ccaf068.gif"
             alt="Ujjwal Verma"
             className="avatar"
             onError={(e) => {
