@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import TransitionLink from '../components/TransitionLink'
 import ThemeToggle from '../components/ThemeToggle'
 
 function Home() {
@@ -30,15 +30,15 @@ function Home() {
           <img
             src="/d612ee610793a42b00b3bbfd2ccaf068.gif"
             alt="Ujjwal Verma"
-            className="avatar"
+            className="avatar magnetic"
             onError={(e) => {
               e.target.style.background = 'linear-gradient(135deg, #F5C518, #c4a000)'
               e.target.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="50" fill="%230a0a14"/><path d="M50 25 C45 35, 30 38, 15 30 C20 45, 25 55, 35 58 C30 62, 28 68, 25 75 C35 70, 42 65, 50 72 C58 65, 65 70, 75 75 C72 68, 70 62, 65 58 C75 55, 80 45, 85 30 C70 38, 55 35, 50 25Z" fill="%23F5C518"/></svg>')
             }}
           />
 
-          <h1 className="hero-name">Ujjwal Verma</h1>
-          <p className="hero-aka">full stack developer & competitive programmer</p>
+          <h1 className="hero-name" data-text="Ujjwal Verma">Ujjwal Verma</h1>
+          <p className="hero-aka">full stack developer &amp; competitive programmer</p>
 
           <p className="hero-bio">
             Hey, I'm a CSE undergrad and full-stack developer who enjoys building
@@ -68,10 +68,10 @@ function Home() {
           </p>
 
           <div className="hero-links">
-            <Link to="/projects">projects</Link>
-            <a href="https://github.com/ujjwalv01" target="_blank" rel="noopener noreferrer">github</a>
-            <a href="https://x.com/Ujjwal_v01" target="_blank" rel="noopener noreferrer">twitter</a>
-            <a href="https://www.linkedin.com/in/ujjwal-verma-cse/" target="_blank" rel="noopener noreferrer">linkedin</a>
+            <TransitionLink to="/projects" className="magnetic">projects</TransitionLink>
+            <a href="https://github.com/ujjwalv01" target="_blank" rel="noopener noreferrer" className="magnetic">github</a>
+            <a href="https://x.com/Ujjwal_v01" target="_blank" rel="noopener noreferrer" className="magnetic">twitter</a>
+            <a href="https://www.linkedin.com/in/ujjwal-verma-cse/" target="_blank" rel="noopener noreferrer" className="magnetic">linkedin</a>
           </div>
         </div>
       </main>

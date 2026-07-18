@@ -5,17 +5,8 @@ function ThemeToggle({ className = '' }) {
     const html = document.documentElement
     const current = html.getAttribute('data-theme')
     const next = current === 'light' ? 'dark' : 'light'
-
-    const applyTheme = () => {
-      html.setAttribute('data-theme', next)
-      localStorage.setItem('theme', next)
-    }
-
-    if (document.startViewTransition) {
-      document.startViewTransition(applyTheme)
-    } else {
-      applyTheme()
-    }
+    html.setAttribute('data-theme', next)
+    localStorage.setItem('theme', next)
   }, [])
 
   return (

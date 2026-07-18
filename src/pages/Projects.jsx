@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useCallback } from 'react'
+import TransitionLink from '../components/TransitionLink'
 import ThemeToggle from '../components/ThemeToggle'
 
 const projects = [
@@ -40,17 +41,69 @@ const projects = [
 ]
 
 function Projects() {
+  const listRef = useRef(null)
+
+  // Scroll-linked parallax: reveal cards via IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    )
+
+    const cards = listRef.current?.querySelectorAll('.project')
+    cards?.forEach((card) => observer.observe(card))
+
+    return () => observer.disconnect()
+  }, [])
+
+  // 3D tilt effect handlers
+  const handleTiltMove = useCallback((e) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+
+    const rotateX = (0.5 - y) * 16  // ±8 degrees
+    const rotateY = (x - 0.5) * 16
+
+    card.style.transition = 'box-shadow 0.2s ease'
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`
+    card.style.boxShadow = `${-rotateY * 0.4}px ${rotateX * 0.4}px 24px rgba(245, 197, 24, 0.06)`
+
+    // Shine gradient follows cursor
+    const shine = card.querySelector('.card-shine')
+    if (shine) {
+      shine.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(245, 197, 24, 0.08) 0%, transparent 60%)`
+    }
+  }, [])
+
+  const handleTiltLeave = useCallback((e) => {
+    const card = e.currentTarget
+    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease, opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease'
+    card.style.transform = ''
+    card.style.boxShadow = ''
+
+    const shine = card.querySelector('.card-shine')
+    if (shine) shine.style.background = ''
+  }, [])
+
   return (
     <>
       <header className="site-header">
-        <Link to="/" className="header-logo">Ujjwal Verma</Link>
+        <TransitionLink to="/" className="header-logo magnetic">Ujjwal Verma</TransitionLink>
         <div className="header-actions">
           <ThemeToggle />
         </div>
       </header>
 
       <main className="inner-page">
-        <Link to="/" className="back">← back</Link>
+        <TransitionLink to="/" className="back magnetic">← back</TransitionLink>
 
         <h1 className="page-title">Projects</h1>
         <p className="page-subtitle">
@@ -58,9 +111,15 @@ function Projects() {
           Most are open-source.
         </p>
 
-        <div className="projects-list">
+        <div className="projects-list" ref={listRef}>
           {projects.map((project, index) => (
-            <div className="project" key={index}>
+            <div
+              className="project"
+              key={index}
+              onMouseMove={handleTiltMove}
+              onMouseLeave={handleTiltLeave}
+            >
+              <div className="card-shine" />
               <div className="project-header">
                 <span className="project-title">{project.title}</span>
                 <div className="project-links">
@@ -86,7 +145,7 @@ function Projects() {
       <footer className="inner-footer">
         <div className="footer-inner">
           <span className="footer-credit">
-            <a href="/">Ujjwal Verma</a>
+            <TransitionLink to="/">Ujjwal Verma</TransitionLink>
           </span>
         </div>
       </footer>
