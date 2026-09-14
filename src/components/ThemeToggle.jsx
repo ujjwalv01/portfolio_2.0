@@ -1,12 +1,22 @@
 import { useCallback } from 'react'
+import { triggerBatSwarm } from '../lib/bats'
 
 function ThemeToggle({ className = '' }) {
-  const handleToggle = useCallback(() => {
+  const handleToggle = useCallback((e) => {
     const html = document.documentElement
     const current = html.getAttribute('data-theme')
     const next = current === 'light' ? 'dark' : 'light'
     html.setAttribute('data-theme', next)
     localStorage.setItem('theme', next)
+
+    // Bats flee the daylight, or return with the night — bursting from / converging on the button
+    const rect = e.currentTarget.getBoundingClientRect()
+    triggerBatSwarm({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+      mode: next === 'light' ? 'out' : 'in',
+      theme: next,
+    })
   }, [])
 
   return (
