@@ -13,7 +13,7 @@ const projects = [
     categories: ['ai', 'full-stack'],
     repo: 'IntervU',
     github: 'https://github.com/ujjwalv01/IntervU',
-    live: 'https://interv-u-ten.vercel.app/',
+    live: 'https://intervyou-ai.vercel.app/',
     featured: true,
   },
   {
