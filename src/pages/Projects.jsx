@@ -6,14 +6,25 @@ import { REPOS_URL, transformRepos, timeAgo } from '../lib/github'
 
 const projects = [
   {
-    title: 'IntervU',
+    title: 'IntervYou',
     tagline: 'Voice-first AI mock interviews',
     description: 'An adaptive AI interviewer (Aria) that actually listens - follows up on vague answers, pushes back on weak ones, then delivers a structured feedback report with scores and improvements. Behavioral, technical, system design, and HR rounds.',
     tags: ['Next.js 15', 'Express', 'PostgreSQL', 'Vapi', 'Groq'],
     categories: ['ai', 'full-stack'],
-    repo: 'IntervU',
-    github: 'https://github.com/ujjwalv01/IntervU',
-    live: 'https://interv-u-ten.vercel.app/',
+    repo: 'IntervYou',
+    github: 'https://github.com/ujjwalv01/IntervYou',
+    live: 'https://intervyou-ai.vercel.app/',
+    featured: true,
+  },
+  {
+    title: 'LinkMedicalSpaces',
+    tagline: 'Airbnb for medical office space',
+    description: 'Discover, list, and book healthcare venues. Multi-step listing flow with Google Maps auto-fill, Stripe subscriptions, Cloudinary media pipeline, and an AI description generator on the Claude API.',
+    tags: ['Next.js 14', 'PostgreSQL', 'Prisma', 'Stripe', 'Claude API'],
+    categories: ['full-stack', 'ai'],
+    repo: 'LinkMedicalSpaces',
+    github: 'https://github.com/ujjwalv01/LinkMedicalSpaces',
+    live: 'https://lmsdeply.vercel.app/',
     featured: true,
   },
   {
@@ -25,7 +36,6 @@ const projects = [
     repo: 'rivalscanai',
     github: 'https://github.com/ujjwalv01/rivalscanai',
     live: 'https://tryrivalscan.vercel.app/',
-    featured: true,
   },
   {
     title: 'RepWise',
@@ -36,16 +46,6 @@ const projects = [
     repo: 'repwise',
     github: 'https://github.com/ujjwalv01/repwise',
     live: 'https://trainwithrepwise.vercel.app/',
-  },
-  {
-    title: 'LinkMedicalSpaces',
-    tagline: 'Airbnb for medical office space',
-    description: 'Discover, list, and book healthcare venues. Multi-step listing flow with Google Maps auto-fill, Stripe subscriptions, Cloudinary media pipeline, and an AI description generator on the Claude API.',
-    tags: ['Next.js 14', 'PostgreSQL', 'Prisma', 'Stripe', 'Claude API'],
-    categories: ['full-stack', 'ai'],
-    repo: 'LinkMedicalSpaces',
-    github: 'https://github.com/ujjwalv01/LinkMedicalSpaces',
-    live: 'https://lmsdeply.vercel.app/',
   },
   {
     title: 'KhareedoNow',
