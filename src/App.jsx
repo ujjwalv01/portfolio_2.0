@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import BackgroundCanvas from './components/BackgroundCanvas'
 import KonamiEasterEgg from './components/KonamiEasterEgg'
 import BatSwarm from './components/BatSwarm'
@@ -66,6 +67,7 @@ function App() {
           <Route path="/experience" element={<Experience />} />
         </Routes>
       )}
+      <Analytics />
     </>
   )
 }
