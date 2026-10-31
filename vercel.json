@@ -5,12 +5,6 @@
       "has": [{ "type": "host", "value": "devujjwal.vercel.app" }],
       "destination": "https://devujjwal.tech/$1",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.devujjwal.tech" }],
-      "destination": "https://devujjwal.tech/$1",
-      "permanent": true
     }
   ],
   "rewrites": [
