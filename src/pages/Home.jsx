@@ -4,6 +4,7 @@ import ThemeToggle from '../components/ThemeToggle'
 import RoleRotator from '../components/RoleRotator'
 import useCachedFetch from '../hooks/useCachedFetch'
 import useCountUp from '../hooks/useCountUp'
+import usePageMeta from '../hooks/usePageMeta'
 import { GITHUB_USER } from '../lib/github'
 
 const CF_HANDLE = 'ujjwxl.exe'
@@ -26,6 +27,7 @@ function Stat({ value, label, to, href }) {
 }
 
 function Home() {
+  usePageMeta({ path: '/' })
   const [time, setTime] = useState('')
 
   useEffect(() => {

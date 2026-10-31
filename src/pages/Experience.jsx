@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import TransitionLink from '../components/TransitionLink'
 import ThemeToggle from '../components/ThemeToggle'
+import usePageMeta from '../hooks/usePageMeta'
 
 // ⚠️ Confirm these two handles — guessed from your other usernames
 const PROFILES = {
@@ -109,6 +110,11 @@ const ICONS = {
 }
 
 function Experience() {
+  usePageMeta({
+    title: 'Experience',
+    description: 'Work experience, competitive programming achievements and toolkit of Ujjwal Verma, full-stack developer from Kanpur.',
+    path: '/experience',
+  })
   const pageRef = useRef(null)
   const timelineRef = useRef(null)
   const progressRef = useRef(null)

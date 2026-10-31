@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useCallback, useState } from 'react'
 import TransitionLink from '../components/TransitionLink'
 import ThemeToggle from '../components/ThemeToggle'
 import useCachedFetch from '../hooks/useCachedFetch'
+import usePageMeta from '../hooks/usePageMeta'
 import { REPOS_URL, transformRepos, timeAgo } from '../lib/github'
 
 const projects = [
@@ -98,6 +99,11 @@ function InnerLink({ href, children }) {
 }
 
 function Projects() {
+  usePageMeta({
+    title: 'Projects',
+    description: 'Open-source and full-stack projects by Ujjwal Verma: React, Node.js, MERN stack apps and GitHub repositories.',
+    path: '/projects',
+  })
   const listRef = useRef(null)
   const [filter, setFilter] = useState('all')
   const hasHover = useMemo(() => window.matchMedia('(hover: hover) and (pointer: fine)').matches, [])

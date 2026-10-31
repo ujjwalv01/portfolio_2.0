@@ -4,11 +4,17 @@ import ThemeToggle from '../components/ThemeToggle'
 import ContributionGraph from '../components/ContributionGraph'
 import CodeforcesCard from '../components/CodeforcesCard'
 import GitHubStats from '../components/GitHubStats'
+import usePageMeta from '../hooks/usePageMeta'
 
 const GITHUB_USER = 'ujjwalv01'
 const CF_HANDLE = 'ujjwxl.exe'
 
 function Activity() {
+  usePageMeta({
+    title: 'Activity',
+    description: 'Live GitHub contributions and Codeforces rating of Ujjwal Verma, competitive programmer and full-stack developer.',
+    path: '/activity',
+  })
   const pageRef = useRef(null)
 
   // Reveal cards as they scroll into view (same pattern as Projects)
