@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "devujjwal.vercel.app" }],
+      "has": [{ "type": "host", "value": "portfolio-2-0-five-amber.vercel.app" }],
       "destination": "https://devujjwal.tech/$1",
       "permanent": true
     }
